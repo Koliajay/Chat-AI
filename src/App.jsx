@@ -1,45 +1,31 @@
-import { useState } from 'react'
-// import axios from 'axios'
-import  axios from 'axios'
-import './App.css'
+// import React from "react"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Chat from "./component/chat"
+import Home from "./pages/home"
+import About from "./pages/about"
+import Contact from "./pages/contact"
+import Team from "./pages/team"
+import Login from "./pages/login"
 
 function App() {
-  const [question,setQuestion ] = useState("")
-  const [answer,setAnswer] = useState("")
-
- async function getdata()
-  {
-    setAnswer("loading...")
-         var response= await axios({
-          url:"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDBQ4B0x6sEoYI6hgR8qr5bQT4duD8lWgo",
-          method:"post",
-          data:{
-            contents:[
-              {parts:[{text:question}]},
-            ],
-          },
-
-        })
-        var ans=response['data']['candidates'][0]['content']['parts'][0]['text']
-        // var text=document.getElementById("text")
-        // text.innerHTML=ans
-        setAnswer(ans)
-  }
 
   return (
     <>
-    <div className="container">
+    <BrowserRouter>
+    <Routes>
+    <Route path="" element={<Home/>} />
+    <Route path="chat" element={<Chat/>} />
+    <Route path="home" element={<Home/>} />
+    <Route path="about" element={<About/>} />
+    <Route path="team" element={<Team/>} />
+    <Route path="login" element={<Login/>} />
+    <Route path="contact" element={<Contact/>} />
 
-    <h1>Pocket Attorney</h1>
-    <div className="ans">
-    <textarea name="" id="text" value={answer} cols="30" rows="10"></textarea>
-    </div>
-    <div className="ques">
-
-    <input type="text" value={question}  onChange={(e)=>setQuestion(e.target.value)}  placeholder="Enter yours questions" />
-    <button onClick={getdata}>click</button>{console.log(question)}
-    </div>
-    </div>
+    
+    </Routes>
+  
+    </BrowserRouter>
+    
     </>
   )
 }
