@@ -11,7 +11,7 @@ function Chat() {
   {
     setAnswer("loading...")
          var response= await axios({
-          url:"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDBQ4B0x6sEoYI6hgR8qr5bQT4duD8lWgo",
+          url:"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=AIzaSyDfkmutgGmbXZHf1N86LHBPUYNZce5GeyQ",
           method:"post",
           data:{
             contents:[
@@ -30,14 +30,14 @@ function Chat() {
     <>
     <div className={Style.container}>
 
-    <h1>Pocket Attorney</h1>
+    <h1 style={{color:'black'}}> <img width="50" height="45" src="https://img.icons8.com/ios/50/bot.png" alt="bot"/> Chat AI</h1>
     <div className="ans">
     <textarea name="" id="text" value={answer} cols="30" rows="10"></textarea>
     </div>
     <div className="ques">
 
-    <input type="text" value={question}  onChange={(e)=>setQuestion(e.target.value)}  placeholder="Enter yours questions" />
-    <button onClick={getdata}>click</button>{console.log(question)}
+    <input type="text" value={question}  onChange={(e)=>setQuestion(e.target.value)}  placeholder="Ask anything" />
+    <button onClick={getdata}><i class="fa-solid fa-paper-plane"></i></button>{console.log(question)}
     </div>
     </div>
     </>
